@@ -29,13 +29,45 @@
     // Array.prototype.some() // is at least one person 19 or older?
     // Array.prototype.every() // is everyone 19 or older?
 
+    const today = (new Date()).getFullYear();
+
+    const isAdult = people.some(person => today - person.year >= 19);
+    console.log({isAdult});
+
+    const allAdult = people.every(person => today - person.year >= 19);
+    console.log({allAdult});
+
+
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
+    const comment = comments.find(comment => comment.id === 823423);
+    console.log(comment);
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
+
+    const index = comments.findIndex(comment => comment.id === 823423);
+    console.log(index);
+
+    comments.splice(index, 1);
+    console.table(comments);
+    // Can you explain how the comments. splice(index, 1) works?
+    // The splice() method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+    // index is the position of the element to be removed
+    // 1 is the number of elements to be removed
+
+    const newArray = [
+      ...comments.slice(0, index),
+      ...comments.slice(index + 1)
+    ];
+
+    console.table(newArray);
+
+    // q: How does the ... work?
+    // a: The spread syntax allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected.
+    // q: Explain in more simple language and give an example?
 
   </script>
 </body>
